@@ -1,0 +1,197 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+    .open-form,
+.reset-form {
+    margin-top: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 25px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 19px;
+    border: 2px solid #83b566;
+    background-color: #83b566;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: .3s;
+}
+.form-popup,
+.success-message {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+.form-popup .form-wrapper {
+    top: 2em;
+    max-width: 700px;
+    background: white;
+    padding: 50px;
+    padding-top: 50px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.form-title {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.close-form {
+    border-radius: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9;
+    cursor: pointer;
+    padding: 10px 30px;
+    background-color: #83b566;
+    border: 2px solid #83b566;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    transition: .3s;
+}
+.send-form {
+    cursor: pointer;
+    padding: 10px 30px;
+    background-color: #83b566;
+    border: 2px solid #83b566;
+    color: #ffffff;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+.form-control:focus {
+    border-color: #83b566;
+    box-shadow: 0 0 0 0.2rem rgba(131, 181, 102, 0.25);
+}
+.btn:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+}
+.success-message {
+    text-align: center;
+}
+.success-message h1 {
+    color: #ffffff;
+    margin-top: 3em;
+}
+</style>
+<script>
+    function myFunction() {
+        const name = document.getElementById("namett").value;
+            const email = document.getElementById('emailtt').value;
+            var url =  `http://localhost:8080/api/register?name=`+name+`&email=`+email;
+
+// Create a new XMLHttpRequest object
+const xhr = new XMLHttpRequest();
+
+// Specify the POST method and API endpoint
+xhr.open("POST", url, true);
+
+// Set the Content-Type header to application/json
+xhr.setRequestHeader("Content-Type", "application/json");
+
+// Define a function to handle the response
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    // Request was successful, do something with the response if needed
+    console.log(xhr.responseText);
+  }
+};
+
+// console.log(link);
+    }
+</script>
+</head>
+<body style="text-align:center">
+  <button class="btn open-form">Your Details Please,</button>
+  <div class="form-popup">
+			<div class="container form-wrapper">
+				
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<h1 class="form-title">Your Details Please,</h1>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="namett"  required="">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="email">E-mail</label>
+							<input type="text" class="form-control" id="emailtt"  required="">
+						</div>
+					</div>
+					<button  onclick="myFunction()" class="btn send-form">Send</button>
+				
+			</div>
+		</div>
+  <div class="success-message">
+    <h1>You success reset this form</h1>
+  </div>
+  <img src="Fashion Frenzy.png" style="
+  margin: auto;
+">
+<div id="mess"></div>
+
+
+<script>
+    $(document).ready(function() {
+
+$('.open-form').click(function() {
+    $('.form-popup').show();
+});
+$('.close-form').click(function() {
+    $('.form-popup').hide();
+});
+
+$('.reset-form').click(function() {
+    $('.success-message').show();
+$('#my-form').trigger( 'reset' );
+
+setTimeout(function() {
+    $('.success-message').hide()
+}, 1500);
+});
+
+$(document).mouseup(function(e) {
+    var container = $(".form-wrapper");
+    var form = $(".form-popup");
+
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        form.hide();
+    }
+});
+
+
+});
+console.log("tesss");
+
+</script>
+
+
+</body>
+</html>

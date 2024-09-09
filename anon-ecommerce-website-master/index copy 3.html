@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Frenzye</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    .header-main {
+    padding: 0px 0;
+}
+.header-main {
+    padding: 0px 0;
+    border-bottom: 1px solid hsl(0deg 0% 99.91%);
+}
+.btn {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0px 9px;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 27px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#Sugesstionid {
+  display:none;
+}
+#Sugesstionid li{
+  text-align: center; 
+}
+
+#Sugesstionid li:hover{
+  background: #db7688;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 0rem;
+}
+#targetedDiv img {
+    vertical-align: middle;
+    border-style: none;
+    height: 25rem !important;
+    padding: 44px;
+}
+  </style>
+
+  <!-- loader css -->
+  <style>
+    
+.containerofRings{
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 50% 223%;
+}
+
+.ring{
+  position:absolute;
+  height: 200px;
+  width: 200px;
+  border: 0px solid #272727;
+  border-radius:50%;
+}
+
+.ring:nth-child(1){
+  border-bottom-width: 10px;
+  border-color: #ca2c92;
+  animation: rotate1 1.5s linear infinite;
+}
+
+.ring:nth-child(2){
+  border-right-width: 10px;
+  border-color: #00ffff;
+  animation: rotate2 1.5s linear infinite;
+}
+
+.ring:nth-child(3){
+  border-top-width: 10px;
+  border-color: #E0E722;
+  animation: rotate3 1.5s linear infinite;
+}
+
+
+@keyframes rotate1{
+  0%{
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg)
+  }
+  100%{
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg)
+  }
+}
+@keyframes rotate2{
+  0%{
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg)
+  }
+  100%{
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg)
+  }
+}
+@keyframes rotate3{
+  0%{
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg)
+  }
+  100%{
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg)
+  }
+}
+
+.post-like.active {
+  color: white;
+  background-color: red;
+  opacity: 1;
+  transform: scale(1.2);
+}
+  </style>
+</head>
+
+<body>
+  <div class="overlay" data-overlay></div>
+  <header>
+    <div class="header-main">
+      <div class="container">
+        <a href="#" class="header-logo">
+          <img style="height: 1%;" src="Fashion Frenzy.png" alt="Anon's logo" width="120" height="36">
+        </a>
+        <div class="container" style="
+        width: auto;
+        margin-top: 3%;
+    ">
+          <ul class="desktop-menu-category-list" style="
+          margin: 0px;
+      ">
+            <li class="menu-category">
+              <a href="#" class="menu-title filtername" data-filter="all" data-catagory="All Post" data-api="http://localhost:8080/api/products?maxResults=5">Home</a>
+            </li>
+            <li class="menu-category">
+              <a href="#" class="menu-title">Categories</a>
+              <div class="dropdown-panel">            
+                <ul class="dropdown-panel-list">
+                  <li class="filtername menu-title" da  data-gender="man" data-catagory="All Men's Wear" data-api="http://localhost:8080/api/products/gender?gender=men&maxResults=10">
+                    <a href="#" >Men's</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="men" data-filter="shirt" data-catagory="Men's Shirt" data-api="http://localhost:8080/api/products/category?gender=men&category=shirt">Shirt</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#"  class="filtername" data-gender="men" data-filter="Hoodie" data-catagory="Men's Hoodie" data-api="http://localhost:8080/api/products/category?gender=men&category=Hoodie">Hoodie</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#"  class="filtername" data-gender="men" data-filter="Jeans" data-catagory="Men's Jeans" data-api="http://localhost:8080/api/products/category?gender=men&category=Jeans">Jeans</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#"  class="filtername" data-gender="men" data-filter="Coat" data-catagory="Men's Coat" data-api="http://localhost:8080/api/products/category?gender=men&category=Coat">Coat</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#"  class="filtername" data-gender="men" data-filter="Sweater" data-catagory="Men's Sweater" data-api="http://localhost:8080/api/products/category?gender=men&category=Sweater">Sweater</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="men" data-catagory="All Men's Wear" data-api="http://localhost:8080/api/products/gender?gender=men">
+                      <img src="./assets/images/mens-banner.jpeg" alt="men's fashion" width="250" height="119">
+                    </a>
+                  </li>
+                </ul>
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title" data-catagory="All Women's Wear" data-api="http://localhost:8080/api/products/gender?gender=women&maxResults=10">
+                    <a href="#" >Women's</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="women" data-filter="Dress" data-catagory="Women's Dress" data-api="http://localhost:8080/api/products/category?gender=women&category=Dress">Dress</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="women" data-filter="Top" data-catagory="Women's Top" data-api="http://localhost:8080/api/products/category?gender=women&category=Top">Top</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="women" data-filter="Jeans" data-catagory="Women's Jeans" data-api="http://localhost:8080/api/products/category?gender=women&category=Jeans">Jeans</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="women" data-filter="Coat" data-catagory="Women's Coat" data-api="http://localhost:8080/api/products/category?gender=women&category=Coat">Coat</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#" class="filtername" data-gender="women" data-filter="Sweater" data-catagory="Women's Sweater" data-api="http://localhost:8080/api/products/category?gender=women&category=Sweater">Sweater</a>
+                  </li>
+                  <li class="panel-list-item">
+                    <a href="#"  class="filtername" data-gender="women" data-catagory="All Women's Wear" data-api="http://localhost:8080/api/products/gender?gender=women">
+                      <img src="./assets/images/womens-banner.jpeg" alt="women's fashion" width="250" height="119">
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="header-user-actions">
+          <button class="action-btn">
+            <ion-icon name="person-outline"></ion-icon>
+          </button>
+          <button class="action-btn">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count" id="countnumber">0</span>
+          </button>
+        </div>
+        <button type="button" class="btn btn-success" onclick="openAlert()">send mail</button>
+
+      </div>
+    </div>
+   
+  </header>
+  <div class="modal-box">
+    <div class="sd-multiSelect form-group">
+      <label for="current-job-role">Multi Select</label>
+      <select multiple id="current-job-role" class="sd-CustomSelect">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </select>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://bsite.net/savrajdutta/cdn/multi-select.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".sd-CustomSelect").multipleSelect({
+        selectAll: false,
+        onOptgroupClick: function(view) {
+          $(view).parents("label").addClass("selected-optgroup");
+        }
+      });
+    });
+  </script>
+  <main>
+    <div class="product-container">
+      <div class="container" style="margin: 0px 34px;">
+        <div class="product-box" style="width: 100%;">
+          <div class="product-main" style="width: 130%;">
+            <h4 id="showtitle"style="
+            display: flex;
+        ">All</h4>
+        <div><h5>Trending searches</h5><div id="trendingSearch"><span class="badge badge-info">Info</span></div></div>
+            <div class="product-grid" id="targetedDiv">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+  jQuery.noConflict();
+  // Now you should use jQuery instead of $
+  jQuery(document).ready(function($) {
+      // Your jQuery code here
+      var filterBtns = $('.filtername');
+      
+      
+	    filterBtns.click(function(event){
+        var gender = $(this).attr('data-gender'); 
+        var catagoty = $(this).attr('data-filter');
+        console.log("catafuj"+catagoty)
+        const titleOFDiv = document.getElementById('showtitle');  
+        titleOFDiv.innerHTML = '';
+        titleOFDiv.innerHTML = $(this).attr('data-catagory');
+        titleOFDiv.innerHTML += `
+        <div class="header-search-container">
+          <input type="search" id="myInput" name="search" class="search-field" onmouseover="showsugesstion()" onmouseout="closesugesstion()" style="
+    width: 27%;
+    margin-left: 20px;
+" placeholder="Enter your product name...">
+        </div>
+        <ul onmouseover="showsugesstion()" onmouseout="closesugesstion()"  id="Sugesstionid" style="background: pink;position: absolute;margin-top: 42px;left: 15%;font-size: 1rem;width: 31%;z-index: 10;border: 1px solid pink;border-radius: 3px;">
+          
+        </ul>
+        <div>
+          <select id="SortBY" class="btn btn-primary">
+        <option value='1,1'>Brand : A-Z</option>
+        <option value='1,0'>Brand : Z-A</option>
+        <option value='2,1'>Title : A-Z</option>
+        <option value='2,0'>Title : Z-A</option>
+        <option value='3,1'>Price : asc</option>
+        <option value='3,0'>Price : desc</option>
+    </select>
+    <button type="button" onclick="calledFilterData('`+gender+`','`+catagoty+`')" class="btn btn-primary">Apply</button>
+        </div>  `;
+        console.log($(this).attr('data-catagory'));
+
+        console.log("I am clicked");
+        var currentFilter = $(this).attr('data-filter');
+        console.log(currentFilter);
+
+        var APILInk = $(this).attr('data-api');
+        callAPI(APILInk);
+        const inputElement = document.getElementById('myInput');
+    
+    // Attach the event listener to the input element
+    inputElement.addEventListener('input', function(event) {
+    // Call handleCharacterInput with event and additional variable
+    handleCharacterInput(event, gender, catagoty);
+});
+
+
+  });
+  
+  });
+  </script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+
+function calledFilterData(G,C){
+var attr = document.getElementById('SortBY');
+var sortBYe = attr.value;
+console.log(attr)
+var sortBYe = sortBYe.split(",");
+console.log(sortBYe[0]);
+console.log(sortBYe[1])
+
+  a= Math.floor(sortBYe[0]);
+  Order= Math.floor(sortBYe[1]);
+  // console.log(typeof(sortBYe));
+  console.log(sortBYe);
+  console.log(Order)
+  callAPI('http://localhost:8080/api/products/sort?gender='+G+'&category='+C+'&sortBy='+a+'&sortOrder='+Order);
+}
+
+function SelectSearch(G,C,I){
+  callAPI('http://localhost:8080/api/products/search?gender='+G+'&category='+C+'&searchQuery='+I);
+  // console.log(G);
+  // console.log(C);
+  // console.log(I);
+}
+
+function callAPI(link){
+   var container = document.getElementById('targetedDiv');
+   container.innerHTML = ''; // Clear previous content  
+   container.innerHTML= `<div class="containerofRings">
+  <div class="ring"></div>
+  <div class="ring"></div>
+  <div class="ring"></div>
+</div>`;
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+  // Configure the request
+  xhr.open('GET',link, true);
+  // Set up a callback function to handle the response
+  xhr.onload = function() {
+   
+    if (xhr.status >= 200 && xhr.status < 300) {
+      // Request was successful
+      var res = xhr.responseText;
+      res= JSON.parse(res);
+      function getUniqueBrands(res) {
+    const uniqueBrands = [];
+    const brandSet = new Set();
+    res.forEach(item => {
+        if (!brandSet.has(item.Brand)) {
+            brandSet.add(item.Brand);
+            uniqueBrands.push(item.Brand);
+        }
+    });
+    return uniqueBrands;
+}
+const uniqueBrands = getUniqueBrands(res);
+      console.log(uniqueBrands);
+      
+      htmltext = `<select id="brands" name="brands" multiple>
+   `
+
+  uniqueBrands.forEach(function(item) {  
+    htmltext+= ` <option value="`+item+`">`+item+`</option> `
+  });
+
+  htmltext+= ` </select>
+`
+htmltext= `<select id="brands" name="brands" multiple size="4">
+  <option value="Boohoo">Boohoo</option>
+  <option value="Nike">Nike</option>
+  <option value="Adidas">Adidas</option>
+  <option value="Puma">Puma</option>
+  <!-- Add more options as needed -->
+</select>`
+      container.innerHTML = htmltext;
+      const selectBox = document.getElementById('brands');
+selectBox.addEventListener('change', function() {
+  const selectedOptions = Array.from(selectBox.selectedOptions).map(option => option.value);
+  console.log(selectedOptions);
+}); 
+      // console.log(typeof(JSON.parse(res))); // Output the response data to the console
+      res.forEach(function(item) {          
+            container.innerHTML+= `<div class="showcase" data-filter="`+item.Brandt+`">
+
+                    <div class="showcase-banner">
+
+                      <img onclick="myFunction('`+item.URL+`')"  src="`+item.Image+`" alt="Mens Winter Leathers Jackets" width="300" class="product-img default">
+                      <img onclick="myFunction('`+item.URL+`')"  src="`+item.Image+`" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+
+
+                      <div class="showcase-actions">
+                        <button class="btn-action post-like"  data-likepostValue="false">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>                      
+                      </div>
+
+                    </div>
+
+                    <div class="showcase-content">
+
+                      <a href="`+item.URL+`" target="_blank" class="showcase-category">`+item.Title+`</a>
+
+                      <div class="price-box">
+                        Brand: <p class="price">`+item.Brand+`</p> 
+                      </div>
+                      <div class="price-box">
+                        Price: <p class="price">`+item.Price+`</p>
+                      </div>
+                      </div>
+
+                    </div>`
+  });
+      const likeBtns = document.querySelectorAll(".post-like");
+  console.log(likeBtns);
+
+likeBtns.forEach((likeBtn) => {
+
+  likeBtn.addEventListener("click", () => {
+    console.log("I m called likeeee");
+    var count = document.getElementById("countnumber").innerHTML;
+    if (likeBtn.classList.contains("active")) {      
+      document.getElementById("countnumber").innerHTML = --count;
+      likeBtn.classList.remove("active");
+    } else {
+      document.getElementById("countnumber").innerHTML = ++count;
+      likeBtn.classList.add("active");
+    }
+  });
+});
+
+    } else {
+      // Request failed
+      container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content   
+      console.error('Request failed with status ' + xhr.status);
+    }
+  };
+  // Set up a callback function to handle errors
+  xhr.onerror = function() {
+    container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content 
+    console.error('Request failed');
+  };
+  // Send the request
+  xhr.send();
+}
+callAPI('http://localhost:8080/api/products')
+function TextCompletionDiv(link,gender,catagory){
+  var xhr = new XMLHttpRequest();
+  // Configure the request
+  xhr.open('GET',link, true);
+  // Set up a callback function to handle the response
+  xhr.onload = function() {
+    container = document.getElementById("Sugesstionid");
+    if (xhr.status >= 200 && xhr.status < 300) {
+      // Request was successful
+      var res = xhr.responseText;
+      console.log(res);
+      res= JSON.parse(res);
+      console.log(res);
+      
+      container.innerHTML = '';
+      // console.log(typeof(JSON.parse(res))); // Output the response data to the console
+      res.forEach(function(item) {          
+            container.innerHTML+= `<li onclick="SelectSearch('`+gender+`','`+catagory+`','`+ item +`')"> `+ item +`</li>`
+      });
+    } else {
+      // Request failed
+      container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content   
+      console.error('Request failed with status ' + xhr.status);
+    }
+  };
+  // Set up a callback function to handle errors
+  xhr.onerror = function() {
+    container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content 
+    console.error('Request failed');
+  };
+  // Send the request
+  xhr.send();
+}
+
+function showsugesstion(){
+  const displaydiv = document.getElementById('Sugesstionid');  
+  displaydiv.style.display = "block";
+}
+
+function closesugesstion(){
+  const displaydiv = document.getElementById('Sugesstionid');  
+  displaydiv.style.display = "none";
+}
+</script>
+
+<script>
+ function myFunction(linkl) {
+  window.open(linkl, "_blank");
+}
+
+function handleCharacterInput(event, gender,catagory)  {
+      // Get the value of the input field
+      var inputValue = event.target.value;
+      var apiForTextCompletion = "http://localhost:8080/api/products/word-completion?gender="+gender+"&category="+catagory+"&prefix="+inputValue;
+      TextCompletionDiv(apiForTextCompletion,gender,catagory);
+      console.log(apiForTextCompletion);
+      // Call your desired function here, passing the input value
+      // console.log("Entered character:", inputValue);
+    }
+    
+   
+
+</script>
+
+<script>
+  function openAlert() {
+      alert("A mail was sucessfully send to you!!");      
+      var xhr = new XMLHttpRequest();
+  // Configure the request
+  xhr.open('GET','http://localhost:8080/api/products/send-deals', true);
+  // Set up a callback function to handle the response
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      } else {
+       console.error('Request failed with status ' + xhr.status);    }
+  };
+  // Set up a callback function to handle errors
+  xhr.onerror = function() {
+    container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content 
+    console.error('Request failed');
+  };
+  // Send the request
+  xhr.send();
+  }
+
+  
+  var xhr = new XMLHttpRequest();
+  // Configure the request
+  xhr.open('GET','http://localhost:8080/api/products/trending-searches', true);
+  // Set up a callback function to handle the response
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+     console.log(res); // Output the response data to the console
+     var displaydiv = document.getElementById('trendingSearch'); 
+     displaydiv.innerHTML= ``
+     for (let i = 0; i < cars.length; i++) {
+      displaydiv.innerHTML+= `<span class="badge badge-info">`+res[i]+`</span>`
+}
+      } else {
+       console.error('Request failed with status ' + xhr.status);
+    }
+  };
+  // Set up a callback function to handle errors
+  xhr.onerror = function() {
+    container.innerHTML = '<h2>Sorry !! do not have data for this field'; // Clear previous content 
+    console.error('Request failed');
+  };
+  // Send the request
+  xhr.send();
+</script>
+
+</body>
+
+</html>
